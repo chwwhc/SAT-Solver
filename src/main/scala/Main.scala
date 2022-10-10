@@ -1,6 +1,22 @@
 import AST.*
+import Solver.*
 
-@main def hello: Unit = 
-  val var1 = Const(false)
-  val var2 = Const(true)
-  println(var1 == var2)
+@main def hello: Unit =
+  val e1 = ((
+    isSatisfiable(
+      And(
+        And(
+          Var("x"),
+          And(
+            And(
+              Var("x"),
+              And(And(And(Var("x"), Var("x")), Var("x")), Var("x"))
+            ),
+            Var("x")
+          )
+        ),
+        Var("x")
+      )
+    )
+  ))
+  println(e1)
